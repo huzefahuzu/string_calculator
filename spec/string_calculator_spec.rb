@@ -51,5 +51,10 @@ RSpec.describe StringCalculator do
       calculator = StringCalculator.new
       expect(calculator.add("2,1000")).to eq(1002)
     end
+
+    it 'returns the sum when using a custom delimiter of any length' do
+      calculator = StringCalculator.new
+      expect(calculator.add("//[***]\n1***2***3")).to eq(6)
+    end
   end
 end
