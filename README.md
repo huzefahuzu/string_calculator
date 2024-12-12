@@ -23,7 +23,7 @@ A straightforward, rule-driven calculator that interprets string inputs and exec
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/string_calculator.git
+   git clone git@github.com:huzefahuzu/string_calculator.git
    cd string_calculator
    ```
 
@@ -68,6 +68,8 @@ A straightforward, rule-driven calculator that interprets string inputs and exec
    Finished in 0.00146 seconds (files took 0.02901 seconds to load)
    14 examples, 0 failures
    ```
+---
+
 
 ### Usage Examples 🎯:
 
