@@ -34,7 +34,7 @@ A straightforward, rule-driven calculator that interprets string inputs and exec
 
 3. **Run Tests**:
    ```bash
-      rspec
+   rspec
    ```
 
 
