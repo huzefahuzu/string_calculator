@@ -56,5 +56,15 @@ RSpec.describe StringCalculator do
       calculator = StringCalculator.new
       expect(calculator.add("//[***]\n1***2***3")).to eq(6)
     end
+
+    it 'returns the sum when using multiple custom delimiters' do 
+      calculator = StringCalculator.new
+      expect(calculator.add("//[*][%]\n1*2%3")).to eq(6)
+    end
+
+    it 'returns the sum when using multiple delimiters of varying lengths' do
+      calculator = StringCalculator.new
+      expect(calculator.add("//[***][%%]\n1***2%%3")).to eq(6)
+    end
   end
 end
