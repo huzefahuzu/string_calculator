@@ -24,7 +24,7 @@ class StringCalculator
     if numbers.start_with?("//") 
       header, numbers = numbers.split("\n", 2) 
       delimiter = if header.match(%r{//\[(.+)\]}) 
-        Regexp.escape(header.match(%r{//\[(.+)\]})[1]) 
+        parse_multiple_delimiters(header.match(%r{//\[(.+)\]})[1])
       else 
         Regexp.escape(header[2]) 
       end 
@@ -33,5 +33,10 @@ class StringCalculator
     else 
       [",|\n", numbers] 
     end 
+  end
+
+  def parse_multiple_delimiters(delimiter_string)
+    delimiters = delimiter_string.scan(/\[([^\]]+)\]/).flatten 
+    delimiters.map { |delim| Regexp.escape(delim) }.join('|')
   end
 end
