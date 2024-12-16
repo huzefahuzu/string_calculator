@@ -31,6 +31,10 @@ RSpec.describe StringCalculator do
         expect(calculator.add("//;\n1;2")).to eq(3)
       end
 
+      it 'returns the product when using single-character * delimiter' do 
+        expect(calculator.add("//*\n2*2*3")).to eq(12)
+      end
+
       it 'returns the sum when using a custom delimiter of any length' do
         expect(calculator.add("//[***]\n1***2***3")).to eq(6)
       end

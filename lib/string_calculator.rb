@@ -7,7 +7,11 @@ class StringCalculator
     parsed_numbers = split_numbers(numbers, delimiter)
     check_for_negatives!(parsed_numbers)
 
-    sum_ignoring_large_numbers(parsed_numbers)
+    if single_custom_delimiter_is_star?(delimiter, numbers)
+      product_of_numbers(ignore_large_numbers(parsed_numbers))
+    else
+      sum_of_numbers(ignore_large_numbers(parsed_numbers))
+    end
   end
 
   private
@@ -52,7 +56,22 @@ class StringCalculator
   end
 
   # Returns the sum of all numbers except those greater than 1000.
-  def sum_ignoring_large_numbers(parsed_numbers)
-    parsed_numbers.reject { |n| n > 1000 }.sum
+  def ignore_large_numbers(parsed_numbers)
+    parsed_numbers.reject { |n| n > 1000 }
+  end
+
+  def sum_of_numbers(parsed_numbers)
+    parsed_numbers.sum
+  end
+
+  def product_of_numbers(parsed_numbers)
+    parsed_numbers.inject(1) { |product, number| product * number }
+  end
+
+  def single_custom_delimiter_is_star?(delimiter, original_input)
+    return false unless !original_input.match(%r{//(\[.+\])})
+
+    unescaped_delimiter = delimiter.gsub("\\", "")
+    unescaped_delimiter == "*"
   end
 end
